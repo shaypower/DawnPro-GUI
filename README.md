@@ -1,6 +1,8 @@
 # DawnPro-Utils
 DawnPro-Utils is a tool used to control the Moondrop Dawn Pro AMP/DAC.
 
+![screenshot](preview.png)
+
 ## Features
 
 - Change the LED status (on, temp-off, off)
