@@ -17,14 +17,14 @@ class ModernGUI(Gtk.Window):
         self.vbox.set_margin_end(10)
         self.add(self.vbox)
 
-        #Volume
+        # Volume
         self.slider = Gtk.Scale.new_with_range(Gtk.Orientation.HORIZONTAL, 0, 100, 1)
         self.slider.set_value(50)
         self.slider.set_margin_bottom(10)
         self.vbox.pack_start(self.slider, True, True, 0)
         self.slider.connect("value-changed", self.on_slider_value_changed)
 
-        #LED
+        # LED
         self.led_toggle_label = Gtk.Label(label="LED Toggle: On")
         self.led_toggle_label.set_margin_top(10)
         self.vbox.pack_start(self.led_toggle_label, True, True, 0)
@@ -37,7 +37,7 @@ class ModernGUI(Gtk.Window):
         self.vbox.pack_start(self.led_toggle, True, True, 0)
         self.led_toggle.connect("changed", self.on_led_toggle_changed)
 
-        #Gain
+        # Gain
         self.gain_label = Gtk.Label(label="Gain: Low")
         self.gain_label.set_margin_top(10)
         self.vbox.pack_start(self.gain_label, True, True, 0)
@@ -49,7 +49,7 @@ class ModernGUI(Gtk.Window):
         self.vbox.pack_start(self.gain, True, True, 0)
         self.gain.connect("changed", self.on_gain_changed)
 
-        #Filter
+        # Filter
         self.filter_label = Gtk.Label(label="Filter: Fast Roll-Off Low Latency")
         self.filter_label.set_margin_top(10)
         self.vbox.pack_start(self.filter_label, True, True, 0)
@@ -64,11 +64,13 @@ class ModernGUI(Gtk.Window):
         self.vbox.pack_start(self.filter, True, True, 0)
         self.filter.connect("changed", self.on_filter_changed)
 
-        #Refresh
+        # Refresh
         self.refresh_button = Gtk.Button(label="Refresh")
         self.refresh_button.set_margin_top(20)
         self.refresh_button.connect("clicked", self.on_refresh_clicked)
         self.vbox.pack_start(self.refresh_button, True, True, 0)
+
+        self.on_refresh_clicked(None)
 
     def on_slider_value_changed(self, slider):
         value = int(slider.get_value())
@@ -103,3 +105,4 @@ win = ModernGUI()
 win.connect("destroy", Gtk.main_quit)
 win.show_all()
 Gtk.main()
+
