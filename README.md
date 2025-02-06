@@ -42,3 +42,8 @@ To run the tool, execute the following command:
 ```sh
 python main.py
 ```
+
+## Acknowledgments
+inspired by:
+
+"mdrop" by frahz: https://github.com/frahz/mdrop/ 
