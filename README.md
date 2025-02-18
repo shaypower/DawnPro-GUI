@@ -23,21 +23,34 @@ DawnPro-Utils is a tool used to control the Moondrop Dawn Pro AMP/DAC.
 
 ## Installation
 
-To install the required Python modules, run:
+To install pyusb, run:
 
 ```sh
-pip install pyusb PyGObject
+pip install pyusb
 ```
+
+To install PyGObject, it may depend on your distro or operating system:
+
+https://pygobject.gnome.org/
 
 ## Setup
 
-Add the following rule to your udev rules:
+Add the following rule to your udev rules (you may need to adjust the rule name based on existing rules in `/etc/udev/rules.d/`):
 
 ```sh
-SUBSYSTEM=="usb", ATTRS{idVendor}=="2fc6", MODE="0666"
+echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="2fc6", MODE="0666"' | sudo tee /etc/udev/rules.d/99-dawn-pro.rules
+```
+
+Then run:
+
+```sh
+sudo udevadm control --reload-rules
+sudo udevadm trigger
 ```
 
 ## Usage
+
+Ensure the DAC/AMP is plugged in before running the script.
 
 To run the tool, execute the following command:
 
@@ -46,6 +59,6 @@ python main.py
 ```
 
 ## Acknowledgments
-inspired by:
+Inspired by:
 
-"mdrop" by frahz: https://github.com/frahz/mdrop/ 
+"mdrop" by frahz: https://github.com/frahz/mdrop/
