@@ -59,9 +59,9 @@ class Moondrop:
         try:
             time.sleep(0.1)
             return self.device.ctrl_transfer(bmRequestType, bRequest, wValue, wIndex, data_or_length)
-        except usb.core.USBError as e:
-            logging.error(f"USB control transfer failed: {e}")
-            raise IOError(f"USB control transfer failed: {e}")
+        except usb.core.USBError as error:
+            logging.error(f"USB control transfer failed: {error}")
+            raise IOError(f"USB control transfer failed: {error}") from error
 
     def refresh_volume(self):
         return self.setter.refresh_volume()
