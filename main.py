@@ -35,11 +35,11 @@ def show_error_dialog(message: str) -> None:
         message: The error message to display.
     """
     dialog = Gtk.MessageDialog(
-        None,
-        0,
-        Gtk.MessageType.ERROR,
-        Gtk.ButtonsType.CLOSE,
-        message,
+        parent=None,
+        flags=0,
+        message_type=Gtk.MessageType.ERROR,
+        buttons=Gtk.ButtonsType.CLOSE,
+        text=message
     )
     dialog.run()
     dialog.destroy()
@@ -52,11 +52,11 @@ def show_success_dialog(message: str) -> None:
         message: The success message to display.
     """
     dialog = Gtk.MessageDialog(
-        None,
-        0,
-        Gtk.MessageType.INFO,
-        Gtk.ButtonsType.CLOSE,
-        message,
+        parent=None,
+        flags=0,
+        message_type=Gtk.MessageType.INFO,
+        buttons=Gtk.ButtonsType.CLOSE,
+        text=message
     )
     dialog.run()
     dialog.destroy()
