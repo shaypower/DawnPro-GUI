@@ -24,6 +24,27 @@ DawnPro-Utils is a tool used to control the Moondrop Dawn Pro AMP/DAC.
 
 ## Installation
 
+### From AUR (Arch Linux)
+
+The package is available on the Arch User Repository (AUR). You can install it using your preferred AUR helper:
+
+```sh
+# Using yay
+yay -S dawnpro-gui
+
+# Using paru
+paru -S dawnpro-gui
+```
+
+Or build it manually:
+```sh
+git clone https://aur.archlinux.org/dawnpro-gui.git
+cd dawnpro-gui
+makepkg -si
+```
+
+### Manual Installation
+
 To install pyusb, run:
 
 ```sh

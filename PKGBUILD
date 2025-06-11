@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pyusb' 'python-gobject' 'gtk3')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shaypower/DawnPro-GUI/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('15d72666466d370a162882dea7635659449473199d976ba8f27d18a76877c279')
 
 package() {
   cd "$srcdir/DawnPro-GUI-$pkgver"
@@ -98,7 +98,7 @@ Application files
 .B ~/.config/dawnpro/config.json
 User configuration file
 .SH AUTHOR
-Written by Your Name <your.email@example.com>
+Written by Shay Power <shaythomaspower@gmail.com>
 .SH LICENSE
 MIT License
 EOF
