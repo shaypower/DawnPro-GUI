@@ -1,16 +1,42 @@
 import logging
+from typing import List, Optional, Any, Dict
 import device.utils as utils
 
+
 class GetMethods:
-    def __init__(self, device, constants):
+    """Class for handling get operations on the Moondrop device."""
+
+    def __init__(self, device: Any, constants: Dict[str, Any]) -> None:
+        """Initialize the GetMethods class.
+
+        Args:
+            device: The Moondrop device instance.
+            constants: Dictionary of constant values used for device communication.
+        """
         self.device = device
         self.constants = constants
 
-    def get_data(self):
-        """Retrieve data from the device."""
+    def get_data(self) -> List[int]:
+        """Retrieve data from the device.
+
+        Returns:
+            List of integers containing the device data, or empty list if failed.
+        """
         try:
-            self.device.send_control_transfer(self.constants['BM_REQUEST_TYPE_OUT'], self.constants['B_REQUEST'], self.constants['W_VALUE'], self.constants['W_INDEX'], [0xC0, 0xA5, 0xA3])
-            response = self.device.send_control_transfer(self.constants['BM_REQUEST_TYPE_IN'], self.constants['B_REQUEST_GET'], self.constants['W_VALUE'], self.constants['W_INDEX'], self.constants['DATA_LENGTH'])
+            self.device.send_control_transfer(
+                self.constants['BM_REQUEST_TYPE_OUT'],
+                self.constants['B_REQUEST'],
+                self.constants['W_VALUE'],
+                self.constants['W_INDEX'],
+                [0xC0, 0xA5, 0xA3]
+            )
+            response = self.device.send_control_transfer(
+                self.constants['BM_REQUEST_TYPE_IN'],
+                self.constants['B_REQUEST_GET'],
+                self.constants['W_VALUE'],
+                self.constants['W_INDEX'],
+                self.constants['DATA_LENGTH']
+            )
             logging.info("Data retrieved from device.")
             print(response)
             return response
@@ -18,11 +44,21 @@ class GetMethods:
             logging.error("Failed to retrieve data from the device.")
             return []
 
-    def get_current_volume(self):
-        """Get the current volume from the device."""
+    def get_current_volume(self) -> Optional[int]:
+        """Get the current volume from the device.
+
+        Returns:
+            The current volume as a percentage (0-100), or None if failed.
+        """
         try:
             self.device.refresh_volume()
-            response = self.device.send_control_transfer(self.constants['BM_REQUEST_TYPE_IN'], self.constants['B_REQUEST_GET'], self.constants['W_VALUE'], self.constants['W_INDEX'], self.constants['DATA_LENGTH'])
+            response = self.device.send_control_transfer(
+                self.constants['BM_REQUEST_TYPE_IN'],
+                self.constants['B_REQUEST_GET'],
+                self.constants['W_VALUE'],
+                self.constants['W_INDEX'],
+                self.constants['DATA_LENGTH']
+            )
             volume_value = response[4]
             self.device.volume = volume_value
             percent_volume = utils.convert_volume_to_percent(volume_value)
@@ -32,8 +68,12 @@ class GetMethods:
             logging.error("Failed to get current volume.")
             return None
 
-    def get_current_led_status(self):
-        """Get the current LED status."""
+    def get_current_led_status(self) -> Optional[str]:
+        """Get the current LED status.
+
+        Returns:
+            The current LED status as a string, or None if failed.
+        """
         data = self.get_data()
         if data:
             led_status = utils.convert_led_status_to_string(data[5])
@@ -42,8 +82,12 @@ class GetMethods:
             return led_status
         return None
 
-    def get_gain(self):
-        """Get the current gain."""
+    def get_gain(self) -> Optional[str]:
+        """Get the current gain setting.
+
+        Returns:
+            The current gain setting as a string, or None if failed.
+        """
         data = self.get_data()
         if data:
             gain = utils.convert_gain_to_string(int(data[4]))
@@ -52,8 +96,12 @@ class GetMethods:
             return gain
         return None
 
-    def get_filter(self):
-        """Get the current filter type."""
+    def get_filter(self) -> Optional[str]:
+        """Get the current filter type.
+
+        Returns:
+            The current filter type as a string, or None if failed.
+        """
         data = self.get_data()
         if data:
             filter_type = utils.convert_filter_payload_to_string(data[3])

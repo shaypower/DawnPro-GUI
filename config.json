@@ -1,0 +1,41 @@
+{
+    "device_constants": {
+        "BM_REQUEST_TYPE_OUT": 67,
+        "BM_REQUEST_TYPE_IN": 195,
+        "B_REQUEST": 160,
+        "B_REQUEST_GET": 161,
+        "W_VALUE": 0,
+        "W_INDEX": 2464,
+        "VOLUME_REFRESH_DATA": [192, 165, 162],
+        "DATA_LENGTH": 7,
+        "LED_STATUS_ENABLED": 0,
+        "LED_STATUS_TEMP_OFF": 1,
+        "LED_STATUS_OFF": 2
+    },
+    "device_identifiers": {
+        "MOONDROP_VID": 12230,
+        "DAWN_PRO_PID": 61546,
+        "VOLUME_MAX": 0,
+        "VOLUME_MIN": 112
+    },
+    "default_settings": {
+        "DEFAULT_VOLUME": 50,
+        "DEFAULT_LED_STATUS": "On",
+        "DEFAULT_GAIN": "Low",
+        "DEFAULT_FILTER": "Fast Roll-Off Low Latency"
+    },
+    "ui_metrics": {
+        "WINDOW_WIDTH": 400,
+        "WINDOW_HEIGHT": 300,
+        "MARGIN_TOP": 10,
+        "MARGIN_BOTTOM": 20,
+        "MARGIN_START": 10,
+        "MARGIN_END": 10,
+        "SPACING": 10
+    },
+    "logging": {
+        "LOG_LEVEL": "INFO",
+        "LOG_FORMAT": "%(asctime)s - %(levelname)s - %(message)s",
+        "LOG_FILE": "~/.config/dawnpro/dawnpro.log"
+    }
+} 
