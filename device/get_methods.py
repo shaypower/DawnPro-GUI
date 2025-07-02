@@ -48,7 +48,7 @@ class GetMethods:
         """Get the current volume from the device.
 
         Returns:
-            The current volume as a percentage (0-100), or None if failed.
+            The current volume as a percentage (0-60), or None if failed.
         """
         try:
             self.device.refresh_volume()

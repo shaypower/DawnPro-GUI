@@ -91,7 +91,7 @@ class Moondrop:
         """Set the device volume.
 
         Args:
-            volume: The volume level to set (0-100).
+            volume: The volume level to set (0-60).
 
         Returns:
             True if successful, False otherwise.
@@ -102,7 +102,7 @@ class Moondrop:
         """Get the current volume level.
 
         Returns:
-            The current volume level (0-100) or None if failed.
+            The current volume level (0-60) or None if failed.
         """
         return self.getter.get_current_volume()
 
@@ -121,7 +121,7 @@ class Moondrop:
             The current gain setting or None if failed.
         """
         return self.getter.get_gain()
-    
+
     def get_filter(self) -> Optional[str]:
         """Get the current filter setting.
 
@@ -162,4 +162,4 @@ class Moondrop:
             True if successful, False otherwise.
         """
         return self.setter.set_gain(status)
-    
+
