@@ -17,10 +17,10 @@ def setup_logging(config: AppConfig) -> None:
     """
     log_config = config.logging
     handlers = [logging.StreamHandler()]
-    
+
     if log_config.LOG_FILE:
         handlers.append(logging.FileHandler(log_config.LOG_FILE))
-    
+
     logging.basicConfig(
         level=getattr(logging, log_config.LOG_LEVEL),
         format=log_config.LOG_FORMAT,
@@ -119,7 +119,7 @@ class ModernGUI(Gtk.Window):
 
     def create_volume_slider(self) -> None:
         """Create and configure the volume slider."""
-        self.slider = Gtk.Scale.new_with_range(Gtk.Orientation.HORIZONTAL, 0, 100, 1)
+        self.slider = Gtk.Scale.new_with_range(Gtk.Orientation.HORIZONTAL, 0, 60, 1)
         self.slider.set_value(self.config.default_settings.DEFAULT_VOLUME)
         self.slider.set_margin_bottom(self.config.ui_metrics.MARGIN_BOTTOM)
         self.vbox.pack_start(self.slider, True, True, 0)
@@ -229,7 +229,7 @@ class ModernGUI(Gtk.Window):
             self.config.default_settings.DEFAULT_FILTER = self.filter.get_active_text()
             config_path = os.path.expanduser('~/.config/dawnpro/config.json')
             self.config.save_to_file(config_path)
-            
+
             show_success_dialog("Settings saved successfully!")
             logging.info("Settings saved to configuration file")
         except Exception as e:

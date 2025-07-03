@@ -40,7 +40,7 @@ class SetMethods:
         """Set the device volume.
 
         Args:
-            volume: The volume level to set (0-100).
+            volume: The volume level to set (0-60).
 
         Returns:
             True if successful, False otherwise.
