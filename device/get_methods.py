@@ -18,6 +18,12 @@ class GetMethods:
 
     def get_data(self) -> List[int]:
         """Retrieve data from the device.
+        
+        Sends command [0xC0, 0xA5, 0xA3] to request device settings.
+        Returns a 7-byte response where:
+        - data[3] = filter type
+        - data[4] = gain setting
+        - data[5] = LED status
 
         Returns:
             List of integers containing the device data, or empty list if failed.
@@ -37,8 +43,7 @@ class GetMethods:
                 self.constants['W_INDEX'],
                 self.constants['DATA_LENGTH']
             )
-            logging.info("Data retrieved from device.")
-            print(response)
+            logging.info(f"Data retrieved from device: {response}")
             return response
         except IOError:
             logging.error("Failed to retrieve data from the device.")
@@ -46,6 +51,10 @@ class GetMethods:
 
     def get_current_volume(self) -> Optional[int]:
         """Get the current volume from the device.
+        
+        Sends volume refresh command [0xC0, 0xA5, 0xA2] then reads response.
+        Note: This uses a different command than get_data(), so the response
+        structure may differ. Volume is read from response[4].
 
         Returns:
             The current volume as a percentage (0-60), or None if failed.

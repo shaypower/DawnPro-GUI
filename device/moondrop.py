@@ -7,22 +7,6 @@ from device.set_methods import SetMethods
 from device.config import AppConfig
 
 
-BM_REQUEST_TYPE_OUT = 0x43
-BM_REQUEST_TYPE_IN = 0xc3
-B_REQUEST = 160
-B_REQUEST_GET = 161
-W_VALUE = 0x0000
-W_INDEX = 0x09a0
-VOLUME_REFRESH_DATA = [0xC0, 0xA5, 0xA2]
-DATA_LENGTH = 7
-LED_STATUS_ENABLED = 0
-LED_STATUS_TEMP_OFF = 1
-LED_STATUS_OFF = 2
-
-
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-
 class Moondrop:
     """Main class for interacting with the Moondrop Dawn Pro device."""
 
