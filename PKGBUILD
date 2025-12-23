@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python3' 'python-pyusb' 'python-gobject' 'gtk3')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shaypower/DawnPro-GUI/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9a7281aa6d64d63ddc040b27a9cdbd6fb87ea766273e5d96ce78220082f888e3')
 
 package() {
   cd "$srcdir/DawnPro-GUI-$pkgver"

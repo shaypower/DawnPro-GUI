@@ -11,6 +11,6 @@ pkgbase = dawnpro-gui
 	depends = python-gobject
 	depends = gtk3
 	source = dawnpro-gui-1.1.0.tar.gz::https://github.com/shaypower/DawnPro-GUI/archive/v1.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 9a7281aa6d64d63ddc040b27a9cdbd6fb87ea766273e5d96ce78220082f888e3
 
 pkgname = dawnpro-gui
