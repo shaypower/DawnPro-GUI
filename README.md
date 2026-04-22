@@ -183,6 +183,78 @@ To run the tool, execute the following command:
 python main.py
 ```
 
+## Testing
+
+The project includes a comprehensive test suite with hardware emulation, allowing tests to run without physical hardware.
+
+### Running Tests
+
+Install test dependencies:
+
+```sh
+pip install -r requirements-test.txt
+```
+
+Run all tests:
+
+```sh
+pytest
+```
+
+Run tests with verbose output:
+
+```sh
+pytest tests/ -v
+```
+
+Run tests with coverage report:
+
+```sh
+pytest --cov=device --cov=tests --cov-report=html
+```
+
+Open the coverage report:
+
+```sh
+xdg-open htmlcov/index.html  # Linux
+open htmlcov/index.html      # macOS
+```
+
+### Test Structure
+
+```
+tests/
+├── conftest.py           # Pytest fixtures and configuration
+├── mock_hardware.py      # Hardware emulation layer
+├── test_device.py        # Device detection tests
+├── test_volume.py        # Volume control tests
+├── test_gain.py          # Gain switching tests
+├── test_filters.py       # Filter selection tests
+├── test_led.py           # LED status tests
+├── test_integration.py   # End-to-end integration tests
+└── test_error_handling.py # Error handling tests
+```
+
+### Build Verification
+
+Run the build verification script to check:
+- Python version compatibility
+- Required dependencies
+- Syntax validation
+- Configuration file validity
+
+```sh
+python scripts/build_check.py
+```
+
+### CI/CD
+
+Tests run automatically on every push and pull request via GitHub Actions. The CI pipeline:
+- Tests on Python 3.7, 3.8, 3.9, 3.10, 3.11
+- Runs linting (black, flake8, pylint)
+- Generates coverage reports
+- Blocks merges on test failures
+
 ## Acknowledgments
 Inspired by:
 
